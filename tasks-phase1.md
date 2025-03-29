@@ -25,16 +25,45 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
 
     3. Create PR from this branch to **YOUR** master and merge it to make new release. 
     
-    ***place the screenshot from GA after succesfull application of release***
+    ![image](https://github.com/user-attachments/assets/468e5080-9f8e-47f5-b9ae-46c93112dc73)
 
 
 8. Analyze terraform code. Play with terraform plan, terraform graph to investigate different modules.
+Module: dataproc
 
-    ***describe one selected module and put the output of terraform graph for this module here***
+This Terraform module provisions a Google Cloud Dataproc Cluster, which is a managed Apache Spark and Hadoop service. The module automates the setup of the Dataproc cluster with configurable parameters such as machine type, image version, region, and subnet. This allows users to quickly deploy and manage scalable Big Data workloads without needing to configure and maintain the infrastructure manually.By leveraging Google Cloud Dataproc, this module provides a cost-effective and easy-to-use solution for running distributed data processing jobs. The cluster can be used for machine learning, data analytics, ETL pipelines, and other compute-intensive tasks.
+Resources Created
+
+This module provisions the following resources in Google Cloud:
+
+* Google Dataproc Cluster (google_dataproc_cluster.tbd-dataproc-cluster) - A fully managed cluster that supports Spark, Hadoop, Hive, and other Big Data tools.
+
+* Google Project Service (google_project_service.dataproc) - Ensures that the Dataproc API is enabled in the project, allowing the creation and management of Dataproc clusters.
+
+Graph:
+
+    ```
+    cd modules/dataproc
+    terraform init -upgrade
+    terraform graph -type=plan | dot -Tpng > terraform-plan-graph-dataproc.png
+    ```
+file:///home/dominika/tbd-workshop-1/modules/dataproc/terraform-plan-graph-dataproc.png
+
    
 9. Reach YARN UI
    
-   ***place the command you used for setting up the tunnel, the port and the screenshot of YARN UI here***
+   ```bash
+    # Create an SSH tunnel using local port 8080
+    gcloud compute ssh tbd-cluster-m \
+    --project=tbd-2025l-318409 \
+    --zone=europe-west1-d -- -D 8080 -N
+
+    # Run Chrome and connect through the proxy (macOS)
+    /usr/bin/google-chrome --proxy-server="socks5://localhost:8080" \
+    --user-data-dir="/tmp/tbd-cluster-m" http://tbd-cluster-m:8088
+    ```
+   ![hadoop](https://github.com/user-attachments/assets/69d5bc16-3b51-4efd-8a1d-cd489212e543)
+
    
 10. Draw an architecture diagram (e.g. in draw.io) that includes:
     1. VPC topology with service assignment to subnets
