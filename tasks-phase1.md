@@ -76,7 +76,7 @@ file:///home/dominika/tbd-workshop-1/modules/dataproc/terraform-plan-graph-datap
 11. Create a new PR and add costs by entering the expected consumption into Infracost
 For all the resources of type: `google_artifact_registry`, `google_storage_bucket`, `google_service_networking_connection`
 create a sample usage profiles and add it to the Infracost task in CI/CD pipeline. Usage file [example](https://github.com/infracost/infracost/blob/master/infracost-usage-example.yml) 
-
+in progress
    ***place the expected consumption you entered here***
 
    ***place the screenshot from infracost output here***
