@@ -108,8 +108,25 @@ resource_usage:
    ![obraz](https://github.com/user-attachments/assets/ecd52e84-0788-4d3a-b5e0-9a2079b2c013)
 
 11. Create a BigQuery dataset and an external table using SQL
-    
-    ***place the code and output here***
+
+    ```
+    -- Create a new dataset
+    CREATE SCHEMA IF NOT EXISTS `tbd_workshop_dataset`
+    OPTIONS(
+    location="europe-west1"
+    );
+
+    -- Create an external table pointing to ORC files in GCS
+    CREATE OR REPLACE EXTERNAL TABLE `tbd_workshop_dataset.external_orc_table`
+    OPTIONS(
+    format = 'ORC',
+    uris = ['gs://']
+    );
+
+    -- Query the external table to verify it works
+    SELECT * FROM `tbd_workshop_dataset.external_orc_table` LIMIT 10;
+    ```
+    ***place the output here***
    
     ***why does ORC not require a table schema?***
 
