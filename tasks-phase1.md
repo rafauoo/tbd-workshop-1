@@ -76,10 +76,36 @@ file:///home/dominika/tbd-workshop-1/modules/dataproc/terraform-plan-graph-datap
 11. Create a new PR and add costs by entering the expected consumption into Infracost
 For all the resources of type: `google_artifact_registry`, `google_storage_bucket`, `google_service_networking_connection`
 create a sample usage profiles and add it to the Infracost task in CI/CD pipeline. Usage file [example](https://github.com/infracost/infracost/blob/master/infracost-usage-example.yml) 
+in progress
+```
+version: 0.1
+resource_usage:
+  google_artifact_registry.tbd_registry:
+    storage_gb: 50
 
-   ***place the expected consumption you entered here***
+  module.data-pipelines.google_storage_bucket.tbd-code-bucket:
+    storage_gb: 192                         
+    monthly_class_a_operations: 1000000       
+    monthly_class_b_operations: 12500000       
+    monthly_egress_data_transfer_gb:
+      same_continent: 550                   
+      worldwide: 12500                        
+      asia: 1500                              
+      china: 50                              
+      australia: 250
 
-   ***place the screenshot from infracost output here***
+  module.gcp_mlflow_appengine.google_service_networking_connection.private_vpc_connection:
+    monthly_egress_data_transfer_gb:
+      same_region: 250                   
+      us_or_canada: 100                     
+      europe: 70                         
+      asia: 50                           
+      south_america: 100                   
+      oceania: 50               
+      worldwide: 200
+```
+
+   ![obraz](https://github.com/user-attachments/assets/ecd52e84-0788-4d3a-b5e0-9a2079b2c013)
 
 11. Create a BigQuery dataset and an external table using SQL
     
