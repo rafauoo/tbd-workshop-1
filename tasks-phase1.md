@@ -128,7 +128,7 @@ resource_usage:
     ```
     ***place the output here***
    
-    ***why does ORC not require a table schema?***
+ORC doesn't require a table schema because it's a self-describing format that stores metadata about the schema within the file itself. This metadata includes column names, data types, and structure, allowing BigQuery to automatically infer the schema when creating an external table. Unlike formats like CSV that require explicit schema definitions, ORC's built-in schema information makes it more convenient for working with external data in BigQuery.
 
 12. Find and correct the error in spark-job.py
 
