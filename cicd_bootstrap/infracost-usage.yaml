@@ -1,0 +1,14 @@
+version: 0.1
+resource_usage:
+  google_artifact_registry.tbd_registry:
+    storage_gb: 10
+    data_transfer_gb: 50
+
+  google_storage_bucket.tbd_bucket:
+    storage_gb: 100
+    monthly_class_a_operations: 10000
+    monthly_class_b_operations: 50000
+    data_transfer_gb: 200
+
+  google_service_networking_connection.private_vpc_connection:
+    data_processed_gb: 500
