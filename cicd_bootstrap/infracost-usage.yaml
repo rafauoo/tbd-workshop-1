@@ -1,14 +1,25 @@
 version: 0.1
 resource_usage:
   google_artifact_registry.tbd_registry:
-    storage_gb: 10
-    data_transfer_gb: 50
+    storage_gb: 50
 
-  google_storage_bucket.tbd_bucket:
-    storage_gb: 100
-    monthly_class_a_operations: 10000
-    monthly_class_b_operations: 50000
-    data_transfer_gb: 200
+  module.data-pipelines.google_storage_bucket.tbd-code-bucket:
+    storage_gb: 192                         
+    monthly_class_a_operations: 1000000       
+    monthly_class_b_operations: 12500000       
+    monthly_egress_data_transfer_gb:
+      same_continent: 550                   
+      worldwide: 12500                        
+      asia: 1500                              
+      china: 50                              
+      australia: 250
 
-  google_service_networking_connection.private_vpc_connection:
-    data_processed_gb: 500
+  module.gcp_mlflow_appengine.google_service_networking_connection.private_vpc_connection:
+    monthly_egress_data_transfer_gb:
+      same_region: 250                   
+      us_or_canada: 100                     
+      europe: 70                         
+      asia: 50                           
+      south_america: 100                   
+      oceania: 50               
+      worldwide: 200
