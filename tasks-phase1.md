@@ -110,29 +110,27 @@ resource_usage:
 11. Create a BigQuery dataset and an external table using SQL
 
     ```
-    -- Create a new dataset
-    CREATE SCHEMA IF NOT EXISTS `tbd_workshop_dataset`
-    OPTIONS(
-    location="europe-west1"
-    );
+    CREATE SCHEMA IF NOT EXISTS demo OPTIONS(location = 'europe-west1');
 
-    -- Create an external table pointing to ORC files in GCS
-    CREATE OR REPLACE EXTERNAL TABLE `tbd_workshop_dataset.external_orc_table`
-    OPTIONS(
-    format = 'ORC',
-    uris = ['gs://']
-    );
-
-    -- Query the external table to verify it works
-    SELECT * FROM `tbd_workshop_dataset.external_orc_table` LIMIT 10;
+    CREATE OR REPLACE EXTERNAL TABLE demo.shakespeare
+      OPTIONS (
+    
+      format = 'ORC',
+      uris = ['gs://tbd-2025l-318409-data/data/*.orc']);
+    
+    
+    SELECT * FROM demo.shakespeare ORDER BY sum_word_count DESC LIMIT 5;
     ```
-    ***place the output here***
+    ![obraz](https://github.com/user-attachments/assets/636657a2-9a6b-4f31-8049-0135edd96b8b)
+
    
 ORC doesn't require a table schema because it's a self-describing format that stores metadata about the schema within the file itself. This metadata includes column names, data types, and structure, allowing BigQuery to automatically infer the schema when creating an external table. Unlike formats like CSV that require explicit schema definitions, ORC's built-in schema information makes it more convenient for working with external data in BigQuery.
 
 12. Find and correct the error in spark-job.py
 
-    ***describe the cause and how to find the error***
+    Error was easily visible in airflow logs so I changed path to correct project.
+
+![obraz](https://github.com/user-attachments/assets/9f8f9398-df04-4173-bf75-5d3bd763c73f)
 
 13. Add support for preemptible/spot instances in a Dataproc cluster
 
