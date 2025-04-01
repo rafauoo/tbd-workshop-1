@@ -71,7 +71,8 @@ file:///home/dominika/tbd-workshop-1/modules/dataproc/terraform-plan-graph-datap
     3. List of buckets for disposal
     4. Description of network communication (ports, why it is necessary to specify the host for the driver) of Apache Spark running from Vertex AI Workbech
   
-    ***place your diagram here***
+    ![image](https://github.com/user-attachments/assets/faeedba6-2a06-49fe-9c31-f8f183ea1ea6)
+
 
 11. Create a new PR and add costs by entering the expected consumption into Infracost
 For all the resources of type: `google_artifact_registry`, `google_storage_bucket`, `google_service_networking_connection`
@@ -129,7 +130,8 @@ ORC doesn't require a table schema because it's a self-describing format that st
 12. Find and correct the error in spark-job.py
 
     Error was easily visible in airflow logs so I changed path to correct project.
-
+![image](https://github.com/user-attachments/assets/a9bad4c2-7b56-42a7-a5fb-cc0eb47c0e02)
+  Result:
 ![obraz](https://github.com/user-attachments/assets/9f8f9398-df04-4173-bf75-5d3bd763c73f)
 
 13. Add support for preemptible/spot instances in a Dataproc cluster
