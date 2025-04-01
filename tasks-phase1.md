@@ -131,11 +131,31 @@ ORC doesn't require a table schema because it's a self-describing format that st
 
     Error was easily visible in airflow logs so I changed path to correct project.
 ![image](https://github.com/user-attachments/assets/a9bad4c2-7b56-42a7-a5fb-cc0eb47c0e02)
+
   Result:
 ![obraz](https://github.com/user-attachments/assets/9f8f9398-df04-4173-bf75-5d3bd763c73f)
 
-13. Add support for preemptible/spot instances in a Dataproc cluster
+14. Add support for preemptible/spot instances in a Dataproc cluster
 
-    ***place the link to the modified file and inserted terraform code***
+    Link: https://github.com/rafauoo/tbd-workshop-1/edit/master/modules/dataproc/main.tf
+    ```
+    resource "google_dataproc_cluster" "tbd-dataproc-cluster" {
+      #checkov:skip=CKV_GCP_91: "Ensure Dataproc cluster is encrypted with Customer Supplied Encryption Keys (CSEK)"
+      depends_on = [google_project_service.dataproc]
+      name       = "tbd-cluster"
+      project    = var.project_name
+      region     = var.region
+      ...
+        preemptible_worker_config {
+            num_instances = 1
+        }
+      }
+    }
+    ```
+    ![image](https://github.com/user-attachments/assets/d4148932-745d-4454-a6f4-e8049c5ccfc1)
+    
+    The result:
+    will be here
+
     
     
