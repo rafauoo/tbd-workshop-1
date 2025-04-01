@@ -14,11 +14,11 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
 
     ![obraz](https://github.com/user-attachments/assets/99441767-61ae-4ab7-9cb9-f579d1cf9d8a)
 
-5. From avaialble Github Actions select and run destroy on main branch.
+4. From avaialble Github Actions select and run destroy on main branch.
 
     ![obraz](https://github.com/user-attachments/assets/7d5b5073-a85f-436f-aeb5-f76cac6c1c1a)
 
-7. Create new git branch and:
+5. Create new git branch and:
     1. Modify tasks-phase1.md file.
 
        ![obraz](https://github.com/user-attachments/assets/505f6a80-cb8f-41a7-a227-7f4b3f114a3f)
@@ -28,7 +28,7 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
     ![image](https://github.com/user-attachments/assets/468e5080-9f8e-47f5-b9ae-46c93112dc73)
 
 
-8. Analyze terraform code. Play with terraform plan, terraform graph to investigate different modules.
+6. Analyze terraform code. Play with terraform plan, terraform graph to investigate different modules.
 Module: dataproc
 
 This Terraform module provisions a Google Cloud Dataproc Cluster, which is a managed Apache Spark and Hadoop service. The module automates the setup of the Dataproc cluster with configurable parameters such as machine type, image version, region, and subnet. This allows users to quickly deploy and manage scalable Big Data workloads without needing to configure and maintain the infrastructure manually.By leveraging Google Cloud Dataproc, this module provides a cost-effective and easy-to-use solution for running distributed data processing jobs. The cluster can be used for machine learning, data analytics, ETL pipelines, and other compute-intensive tasks.
@@ -50,7 +50,7 @@ Graph:
 file:///home/dominika/tbd-workshop-1/modules/dataproc/terraform-plan-graph-dataproc.png
 
    
-9. Reach YARN UI
+7. Reach YARN UI
    
    ```bash
     # Create an SSH tunnel using local port 8080
@@ -65,7 +65,7 @@ file:///home/dominika/tbd-workshop-1/modules/dataproc/terraform-plan-graph-datap
    ![hadoop](https://github.com/user-attachments/assets/69d5bc16-3b51-4efd-8a1d-cd489212e543)
 
    
-10. Draw an architecture diagram (e.g. in draw.io) that includes:
+8. Draw an architecture diagram (e.g. in draw.io) that includes:
     1. VPC topology with service assignment to subnets
     2. Description of the components of service accounts
     3. List of buckets for disposal
@@ -75,7 +75,7 @@ file:///home/dominika/tbd-workshop-1/modules/dataproc/terraform-plan-graph-datap
 
 
 
-11. Create a new PR and add costs by entering the expected consumption into Infracost
+9. Create a new PR and add costs by entering the expected consumption into Infracost
 For all the resources of type: `google_artifact_registry`, `google_storage_bucket`, `google_service_networking_connection`
 create a sample usage profiles and add it to the Infracost task in CI/CD pipeline. Usage file [example](https://github.com/infracost/infracost/blob/master/infracost-usage-example.yml) 
 in progress
@@ -109,7 +109,7 @@ resource_usage:
 
    ![obraz](https://github.com/user-attachments/assets/ecd52e84-0788-4d3a-b5e0-9a2079b2c013)
 
-11. Create a BigQuery dataset and an external table using SQL
+10. Create a BigQuery dataset and an external table using SQL
 
     ```
     CREATE SCHEMA IF NOT EXISTS demo OPTIONS(location = 'europe-west1');
@@ -128,7 +128,7 @@ resource_usage:
    
 ORC doesn't require a table schema because it's a self-describing format that stores metadata about the schema within the file itself. This metadata includes column names, data types, and structure, allowing BigQuery to automatically infer the schema when creating an external table. Unlike formats like CSV that require explicit schema definitions, ORC's built-in schema information makes it more convenient for working with external data in BigQuery.
 
-12. Find and correct the error in spark-job.py
+11. Find and correct the error in spark-job.py
 
     Error was easily visible in airflow logs so I changed path to correct project.
     
@@ -138,7 +138,7 @@ ORC doesn't require a table schema because it's a self-describing format that st
   
 ![obraz](https://github.com/user-attachments/assets/9f8f9398-df04-4173-bf75-5d3bd763c73f)
 
-14. Add support for preemptible/spot instances in a Dataproc cluster
+12. Add support for preemptible/spot instances in a Dataproc cluster
 
     Link: https://github.com/rafauoo/tbd-workshop-1/edit/master/modules/dataproc/main.tf
     ```
