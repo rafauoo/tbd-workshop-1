@@ -158,7 +158,9 @@ ORC doesn't require a table schema because it's a self-describing format that st
     ![image](https://github.com/user-attachments/assets/d4148932-745d-4454-a6f4-e8049c5ccfc1)
     
     The result:
-    will be here
+    
+    ![image](https://github.com/user-attachments/assets/409336fc-afef-4a80-92c3-2ba431f6e1b2)
+
 
     
     
