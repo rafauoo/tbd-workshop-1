@@ -47,7 +47,7 @@ Graph:
     terraform init -upgrade
     terraform graph -type=plan | dot -Tpng > terraform-plan-graph-dataproc.png
     ```
-file:///home/dominika/tbd-workshop-1/modules/dataproc/terraform-plan-graph-dataproc.png
+![terraform-plan-graph-dataproc](https://github.com/user-attachments/assets/f3b47748-b6ad-47ae-9826-1f664875778d)
 
    
 7. Reach YARN UI
